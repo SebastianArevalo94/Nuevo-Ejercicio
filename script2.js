@@ -3,11 +3,16 @@ const main = async () => {
   // Limpiar antes de mostrar
   document.getElementById("cardsContainer").innerHTML = "";
   let op = parseInt(document.getElementById("op").value);
-  let url = `https://rickandmortyapi.com/api/character/${op}`;
-  await fetch(url)
-    .then((res) => res.json())
-    .then((data) => print(data))
-    .catch((err) => console.log(err));
+  // Verificacion si esta lleno
+  if (isNaN(op)) {
+    alert(`Error. El campo está vacio`);
+  } else {
+    let url = `https://rickandmortyapi.com/api/character/${op}`;
+    await fetch(url)
+      .then((res) => res.json())
+      .then((data) => print(data))
+      .catch((err) => console.log(err));
+  }
 };
 
 // Mostrar personaje en pantalla
@@ -29,6 +34,11 @@ const main2 = async () => {
   // Limpiar antes de mostrar
   document.getElementById("cardsContainer").innerHTML = "";
   let op = parseInt(document.getElementById("op").value);
+  // Verificacion si esta lleno
+  if(isNaN(op)){
+    alert(`Error. El campo está vacio`)
+  }
+  else{
   for (let i = 1; i <= op; i++) {
     let url = `https://rickandmortyapi.com/api/character/${i}`;
 
@@ -37,6 +47,7 @@ const main2 = async () => {
       .then((data) => print2(data))
       .catch((err) => console.log(err));
   }
+}
 };
 
 // Mostrar personajes en pantalla
